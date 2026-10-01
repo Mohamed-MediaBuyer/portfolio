@@ -49,26 +49,28 @@
         .step { background: var(--card-bg); padding: 25px; border-radius: 15px; position: relative; }
         .step-number { color: var(--accent-color); font-size: 2rem; font-weight: 800; margin-bottom: 10px; display: block; }
         
-        /* Swiper (Carousel) Styles */
+        /* Swiper Styles */
         .results-swiper { width: 100%; padding: 20px 0 60px 0; }
         .swiper-slide { background-color: transparent; height: auto; display: flex; justify-content: center; align-items: center; }
         .slide-inner { background-color: var(--card-bg); padding: 30px; border-radius: 20px; border-left: 5px solid var(--accent-color); width: 90%; display: flex; flex-direction: column; align-items: center; }
         .slide-inner h3 { font-size: 1.5rem; margin-bottom: 20px; align-self: flex-start; }
-        .case-study-img { width: 100%; height: 450px; object-fit: contain; background-color: #050505; border-radius: 10px; border: 1px solid #222; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .case-study-img { width: 100%; height: 450px; object-fit: contain; background-color: #050505; border-radius: 10px; border: 1px solid #222; box-shadow: 0 4px 20px rgba(0,0,0,0.5); cursor: pointer; transition: opacity 0.3s; }
+        .case-study-img:hover { opacity: 0.8; }
         .swiper-button-next, .swiper-button-prev { color: var(--accent-color) !important; top: 45%; }
         .swiper-button-prev { left: 0; }
         .swiper-button-next { right: 0; }
         .swiper-pagination-bullet-active { background-color: var(--accent-color) !important; }
         
-        /* Case Studies Section */
-        .case-study-card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid #222; transition: border-color 0.3s ease; max-width: 800px; margin: 0 auto; text-align: center; }
+        /* Case Studies Cards */
+        .case-studies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; align-items: stretch; }
+        .case-study-card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid #222; transition: border-color 0.3s ease; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
         .case-study-card:hover { border-color: var(--accent-color); }
-        .case-study-card h3 { font-size: 2rem; margin-bottom: 15px; color: var(--accent-color); }
+        .case-study-card h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--accent-color); }
         .case-study-card p { color: var(--text-muted); margin-bottom: 30px; }
         
-        /* Pop-up Modal Styles */
+        /* Modal Styles */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background-color: var(--bg-color); border: 1px solid var(--accent-color); padding: 40px; border-radius: 20px; max-width: 700px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; }
+        .modal-content { background-color: var(--bg-color); border: 1px solid var(--accent-color); padding: 40px; border-radius: 20px; max-width: 750px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; }
         .close-modal { position: absolute; top: 20px; right: 20px; background: transparent; border: none; color: var(--text-muted); font-size: 2rem; cursor: pointer; transition: color 0.3s; }
         .close-modal:hover { color: var(--accent-color); }
         .modal-content h2 { text-align: left; font-size: 2rem; color: var(--accent-color); margin-bottom: 10px; }
@@ -76,6 +78,7 @@
         .modal-img { width: 100%; border-radius: 10px; margin-bottom: 30px; border: 1px solid #222; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
         .content-block { margin-bottom: 30px; }
         .content-block h3 { font-size: 1.4rem; color: var(--text-main); margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 5px; }
+        .content-block h4 { font-size: 1.15rem; color: var(--accent-color); margin: 15px 0 10px; }
         .content-block p { color: var(--text-muted); margin-bottom: 15px; font-size: 1rem; }
         .content-block ul { list-style: none; padding-left: 0; }
         .content-block ul li { color: var(--text-muted); margin-bottom: 10px; padding-left: 25px; position: relative; font-size: 1rem; }
@@ -83,13 +86,27 @@
         .insight-box { background: rgba(0, 255, 136, 0.05); border: 1px solid var(--accent-color); padding: 20px; border-radius: 15px; margin-top: 30px; }
         .insight-box h3 { color: var(--accent-color); border: none; padding: 0; margin-bottom: 10px; }
         .insight-box p { color: var(--text-main); margin: 0; }
+        .snapshot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .snapshot-item { background: rgba(0,255,136,0.05); border: 1px solid #222; padding: 15px; border-radius: 10px; text-align: center; }
+        .snapshot-item strong { color: var(--accent-color); font-size: 1.3rem; display: block; }
+        .snapshot-item span { color: var(--text-muted); font-size: 0.8rem; }
+        .big-number { text-align: center; font-size: 2.5rem; font-weight: 800; color: var(--accent-color); margin: 10px 0; }
+
+        /* Gallery Lightbox Styles */
+        .gallery-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; padding: 40px 20px; overflow-y: auto; }
+        .close-gallery { position: fixed; top: 20px; right: 30px; font-size: 3rem; color: var(--accent-color); background: transparent; border: none; cursor: pointer; z-index: 2001; transition: transform 0.3s; }
+        .close-gallery:hover { transform: rotate(90deg); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 60px auto 0; }
+        .gallery-item { border: 1px solid #222; border-radius: 10px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
+        .gallery-item:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
 
         .markets { text-align: center; color: var(--text-muted); padding: 40px 0; border-top: 1px solid #222; }
         .markets span { display: inline-block; margin: 5px 10px; color: var(--text-main); font-weight: 500; font-size: 1.1rem; }
         footer { text-align: center; padding: 60px 0; background: #050505; }
         footer h2 { margin-bottom: 20px; }
         
-        @media (max-width: 768px) { h1 { font-size: 2.5rem; } .num-value { font-size: 2.2rem; } .nav-cta { display: none; } .grid-2-col { grid-template-columns: 1fr; } .case-study-img { height: 300px; } .logo { font-size: 1.2rem; } .profile-img { width: 40px; height: 40px; } .modal-content { padding: 25px; } .slide-inner { width: 85%; padding: 20px; } }
+        @media (max-width: 768px) { h1 { font-size: 2.5rem; } .num-value { font-size: 2.2rem; } .nav-cta { display: none; } .grid-2-col { grid-template-columns: 1fr; } .case-study-img { height: 300px; } .logo { font-size: 1.2rem; } .profile-img { width: 40px; height: 40px; } .modal-content { padding: 25px; } .slide-inner { width: 85%; padding: 20px; } .close-gallery { font-size: 2rem; top: 10px; right: 15px; } .case-studies-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -124,15 +141,35 @@
             <div class="tech-group">
                 <h3>Tools I Master</h3>
                 <div class="tech-icons">
-                    <div class="tech-item"><i class="fas fa-check-circle"></i> Shopify</div>
+                    <div class="tech-item"><i class="fab fa-shopify"></i> Shopify</div>
+                    <div class="tech-item"><i class="fas fa-store"></i> Salla (سلة)</div>
+                    <div class="tech-item"><i class="fas fa-shopping-bag"></i> Zid (زد)</div>
+                    <div class="tech-item"><i class="fab fa-wordpress"></i> WordPress</div>
                     <div class="tech-item"><i class="fas fa-chart-line"></i> GA4</div>
                     <div class="tech-item"><i class="fas fa-tag"></i> GTM</div>
-                    <div class="tech-item"><i class="fas fa-code"></i> Meta Pixel</div>
-                    <div class="tech-item"><i class="fas fa-code"></i> TikTok Pixel</div>
+                    <div class="tech-item"><i class="fab fa-facebook"></i> Meta Pixel</div>
+                    <div class="tech-item"><i class="fab fa-tiktok"></i> TikTok Pixel</div>
+                    <div class="tech-item"><i class="fab fa-snapchat"></i> Snap Pixel</div>
+                    <div class="tech-item"><i class="fas fa-infinity"></i> Meta Ad Library</div>
+                    <div class="tech-item"><i class="fab fa-google"></i> Ads Transparency</div>
+                    <div class="tech-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" style="fill: #00ff88;">
+                            <path d="M12 2L2 22h20L12 2z"/>
+                        </svg> 
+                        Microsoft Clarity
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="container markets">
+        <h3>Global Markets</h3>
+        <span>🇪🇬 Egypt</span> • 
+        <span>🇺🇸 United States</span> • 
+        <span>🇸🇦 Saudi Arabia</span> • 
+        <span>🇬🇧 England</span>
+    </div>
 
     <div class="container">
         <div class="numbers">
@@ -190,31 +227,49 @@
                     <div class="swiper-slide">
                         <div class="slide-inner">
                             <h3>Egypt Market</h3>
-                            <img src="https://i.postimg.cc/RVy5CtBK/Gemini-Generated-Image-d1zwmcd1zwmcd1zw-(1).png" alt="Egypt Market Analytics Dashboard" class="case-study-img">
+                            <img src="https://i.postimg.cc/RVy5CtBK/Gemini-Generated-Image-d1zwmcd1zwmcd1zw-(1).png" alt="Egypt Market Analytics Dashboard" class="case-study-img" onclick="openGallery()">
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="slide-inner">
                             <h3>UK Market</h3>
-                            <img src="https://i.postimg.cc/fR7vJ4d4/Whats-App-Image-2026-02-12-at-9-21-52-PM.jpg" alt="UK Market Scaling Dashboard" class="case-study-img">
+                            <img src="https://i.postimg.cc/fR7vJ4d4/Whats-App-Image-2026-02-12-at-9-21-52-PM.jpg" alt="UK Market Scaling Dashboard" class="case-study-img" onclick="openGallery()">
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="slide-inner">
                             <h3>KSA Market</h3>
-                            <img src="https://i.postimg.cc/qM13YkyF/Gemini-Generated-Image-419fcm419fcm419f.png" alt="KSA Market Analytics Dashboard" class="case-study-img">
+                            <img src="https://i.postimg.cc/qM13YkyF/Gemini-Generated-Image-419fcm419fcm419f.png" alt="KSA Market Analytics Dashboard" class="case-study-img" onclick="openGallery()">
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="slide-inner">
                             <h3>Egypt Market</h3>
-                            <img src="https://i.postimg.cc/fRff30yV/Whats-App-Image-2026-07-18-at-10-50-42-PM-(1).jpg" alt="Egypt Market Analytics Dashboard" class="case-study-img">
+                            <img src="https://i.postimg.cc/fRff30yV/Whats-App-Image-2026-07-18-at-10-50-42-PM-(1).jpg" alt="Egypt Market Analytics Dashboard" class="case-study-img" onclick="openGallery()">
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="slide-inner">
                             <h3>Egypt Market</h3>
-                            <img src="https://i.postimg.cc/7ZZfVCXd/Whats-App-Image-2026-07-18-at-10-58-51-PM.jpg" alt="Egypt Market Analytics Dashboard" class="case-study-img">
+                            <img src="https://i.postimg.cc/7ZZfVCXd/Whats-App-Image-2026-07-18-at-10-58-51-PM.jpg" alt="Egypt Market Analytics Dashboard" class="case-study-img" onclick="openGallery()">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-inner">
+                            <h3>KSA Market — Electronics</h3>
+                            <img src="https://i.postimg.cc/NGWc2Tw0/Whats-App-Image-2026-10-01-at-10-35-16-AM.jpg" alt="Saudi Electronics Brand Results" class="case-study-img" onclick="openGallery()">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-inner">
+                            <h3>KSA Market — Electronics</h3>
+                            <img src="https://i.postimg.cc/fLJGJW23/Whats-App-Image-2026-10-01-at-10-08-57-AM.jpg" alt="Saudi Electronics Brand Results" class="case-study-img" onclick="openGallery()">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-inner">
+                            <h3>Results</h3>
+                            <img src="https://i.postimg.cc/CKNvSywK/Screenshot-2026-10-01-110948.png" alt="Results Dashboard" class="case-study-img" onclick="openGallery()">
                         </div>
                     </div>
                 </div>
@@ -228,14 +283,23 @@
     <section style="background-color: #050505;">
         <div class="container">
             <h2>Case Studies</h2>
-            <div class="case-study-card">
-                <h3>Home & Garden Brand (UK Market)</h3>
-                <p>How I transformed an unstable account with high acquisition costs into a predictable and profitable growth system, reducing CPA by 50% in 4 days.</p>
-                <button class="cta-btn" style="background-color: transparent; color: var(--accent-color); border: 2px solid var(--accent-color);" onclick="openModal()">Read Full Case Study <i class="fas fa-arrow-right"></i></button>
+            <div class="case-studies-grid">
+                <div class="case-study-card">
+                    <h3>Home & Garden Brand (UK Market)</h3>
+                    <p>How I transformed an unstable account with high acquisition costs into a predictable and profitable growth system, reducing CPA by 50% in 4 days.</p>
+                    <button class="cta-btn" style="background-color: transparent; color: var(--accent-color); border: 2px solid var(--accent-color);" onclick="openModal()">Read Full Case Study <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="case-study-card">
+                    <h3>Saudi Electronics & Accessories Brand (KSA Market)</h3>
+                    <p>From SAR 28,000 to SAR 116,000 in one month — with only SAR 4,020 ad spend, 28.86X ROAS, and 116% target achievement despite platforms going down mid-month.</p>
+                    <button class="cta-btn" style="background-color: transparent; color: var(--accent-color); border: 2px solid var(--accent-color);" onclick="openModal2()">Read Full Case Study <i class="fas fa-arrow-right"></i></button>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Case Study Modal 1 (UK) -->
     <div id="caseStudyModal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal()">&times;</button>
@@ -290,6 +354,149 @@
         </div>
     </div>
 
+    <!-- Case Study Modal 2 (KSA Electronics) -->
+    <div id="caseStudyModal2" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal2()">&times;</button>
+            <h2>Saudi Electronics & Accessories Brand</h2>
+            <span class="subtitle">From SAR 28,000 to SAR 116,000 in One Month | Market: Saudi Arabia | Platforms: Google Ads — Meta Ads — TikTok Ads</span>
+            
+            <div class="content-block">
+                <h3>Performance Snapshot</h3>
+                <div class="snapshot-grid">
+                    <div class="snapshot-item"><strong>SAR 28,000</strong><span>August Revenue</span></div>
+                    <div class="snapshot-item"><strong>SAR 116,000</strong><span>September Revenue</span></div>
+                    <div class="snapshot-item"><strong>SAR 4,020</strong><span>Total Ad Spend</span></div>
+                    <div class="snapshot-item"><strong>28.86X</strong><span>Overall ROAS</span></div>
+                    <div class="snapshot-item"><strong>SAR 100,000</strong><span>Monthly Target</span></div>
+                    <div class="snapshot-item"><strong>116%</strong><span>Target Achievement</span></div>
+                    <div class="snapshot-item"><strong>+314%</strong><span>Revenue Growth</span></div>
+                    <div class="snapshot-item"><strong>15X</strong><span>Meta ROAS</span></div>
+                    <div class="snapshot-item"><strong>15X</strong><span>TikTok ROAS</span></div>
+                </div>
+                <p>From SAR 28K to SAR 116K in one month — with a total ad spend of SAR 4,020.</p>
+            </div>
+
+            <img src="https://i.postimg.cc/fLJGJW23/Whats-App-Image-2026-10-01-at-10-08-57-AM.jpg" alt="Saudi Brand Results Dashboard" class="modal-img">
+            <img src="https://i.postimg.cc/NGWc2Tw0/Whats-App-Image-2026-10-01-at-10-35-16-AM.jpg" alt="Saudi Brand Results Dashboard" class="modal-img">
+            
+            <div class="content-block">
+                <h3>The Challenge</h3>
+                <p>Before we started working with the brand, August performance was significantly below expectations, generating only SAR 28,000 in revenue.</p>
+                <p>We started working with the brand at the beginning of September, while Saudi National Day was approaching quickly.</p>
+                <p>The challenge was that competitors had already started preparing and running their campaigns almost a month earlier.</p>
+                <p>We weren't only competing for customers. We were competing against time and competitors at the same time. We needed to move fast — but without making decisions based on pressure or guesswork.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>Step 1: Business Analysis</h3>
+                <p>Our first step was not launching campaigns. We started with a full Business Analysis to understand:</p>
+                <ul>
+                    <li>The problems affecting the brand's sales performance.</li>
+                    <li>The reasons behind the weak performance in the previous month.</li>
+                    <li>The opportunities available in the market.</li>
+                    <li>Which platforms had the strongest growth potential.</li>
+                    <li>What needed to be fixed before scaling.</li>
+                    <li>How we could take advantage of the upcoming Saudi National Day season.</li>
+                </ul>
+                <p>This analysis became the foundation of the entire strategy. Because for us: advertising doesn't start inside Ads Manager — it starts with understanding the business.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>The Strategy</h3>
+                <p>With limited time and Saudi National Day approaching, we needed to move quickly. We identified three core platforms:</p>
+                <ul>
+                    <li><strong>Google Ads:</strong> Our primary platform for capturing existing demand and scaling high-intent traffic.</li>
+                    <li><strong>Meta Ads:</strong> Focused on demand generation, creative testing, and reaching new customer segments.</li>
+                    <li><strong>TikTok Ads:</strong> Used to test creative and content angles while expanding reach to an additional audience.</li>
+                </ul>
+                <p>We also requested specific creative requirements from the client instead of simply asking for more creatives. Each platform had a clear role within the strategy, and every decision was connected to a specific objective.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>The Target</h3>
+                <p>After seeing our approach, analysis, and strategy from the beginning, the client set an ambitious monthly target of:</p>
+                <div class="big-number">SAR 100,000</div>
+                <p>The target was highly ambitious compared with the SAR 28,000 generated in August — especially considering the limited time and the upcoming seasonal competition. But this was exactly the type of challenge I wanted to take on.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>Execution & Optimization</h3>
+                <p>We launched the campaigns, and the initial performance across the platforms was promising. However, we faced a major operational issue.</p>
+                <h4>Payment Method Issue</h4>
+                <p>The payment card connected to Meta and TikTok had an issue, causing the campaigns on both platforms to stop. With the resolution delayed due to a delayed client response, we had two options:</p>
+                <p>Wait for the issue to be resolved and lose valuable time. Or use the platform that was still active and continue pushing growth. We chose the second option.</p>
+                <p>We shifted our focus toward Google Ads and started scaling it progressively instead of allowing an issue affecting two platforms to stop the overall growth process.</p>
+                <h4>Meta & TikTok Performance</h4>
+                <p>Despite running for a very limited period, both Meta and TikTok achieved <strong>15X ROAS</strong> each. The challenge was even greater on Meta because there was almost no historical data available to build on.</p>
+                <p>We had already prepared a dedicated Meta strategy focused on rebuilding data and gradually scaling performance. We repeatedly worked on resolving the payment issue because our strategy was never dependent on a single platform. The objective was to create a multi-platform system capable of maximizing the available opportunity.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>The Challenges</h3>
+                <p>Several factors made the SAR 100K target a real challenge:</p>
+                <ul>
+                    <li>The brand generated only SAR 28K in August.</li>
+                    <li>We started relatively late before Saudi National Day.</li>
+                    <li>Competitors had already been active for weeks.</li>
+                    <li>Meta and TikTok were interrupted due to a payment issue.</li>
+                    <li>Meta had limited historical data.</li>
+                    <li>Delayed client responses affected the speed of troubleshooting.</li>
+                    <li>We had a very limited window to reach the monthly target.</li>
+                </ul>
+                <p>At the beginning, there was a strong possibility that the SAR 100K target was simply too ambitious given the circumstances. But instead of focusing on how difficult the target was, we focused on solving every problem standing between us and the target.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>The Result</h3>
+                <p>The target was SAR 100,000. But we didn't just reach it.</p>
+                <p>On the final day of the month, around midday, revenue had already crossed <strong>SAR 133,000</strong>. By the end of the day, the final reported revenue closed at:</p>
+                <div class="big-number">SAR 116,000</div>
+                <p>With a total advertising spend of SAR 4,020 — Overall ROAS: <strong>28.86X</strong>. Compared with SAR 28,000 in August, the brand went from SAR 28K to SAR 116K in one month, representing approximately <strong>+314% Revenue Growth</strong>.</p>
+                <p>And we achieved 116% of the monthly target despite the operational and strategic challenges throughout the month.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>But the SAR 116K Isn't the Most Important Part</h3>
+                <p>The purpose of this case study isn't simply to show a revenue number and say "look how much I generated." The more important question is: what did I do to generate that result?</p>
+                <p>Because for me, sales don't start inside Ads Manager. They start with Business Analysis. Business Analysis allows me to understand:</p>
+                <ul>
+                    <li>What should I do?</li>
+                    <li>Why should I do it?</li>
+                    <li>What problem am I actually trying to solve?</li>
+                    <li>Which platform should I use?</li>
+                    <li>How should each platform contribute to the overall strategy?</li>
+                    <li>What needs to change before I start scaling?</li>
+                </ul>
+                <p>Only then does Ads Manager become the execution layer for the strategy.</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Why This Case Study Stood Out to Me</h3>
+                <p>This may not be the biggest revenue number I've generated. But it was one of the brands I was most excited to work with. Because almost every stage came with a new challenge: we started late, competitors were already ahead, the target was highly ambitious, time was limited, payment issues interrupted two platforms, platforms went offline, and Meta had limited historical data. And every challenge required a different solution.</p>
+                <p style="margin-top: 15px;">That's exactly what I enjoy about Performance Marketing. I'm not interested in simply managing campaigns. I want to understand the business, identify the bottlenecks, build the right strategy, and continuously solve the problems standing between the business and its target.</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://wa.me/201127062880?text=Hi%20Mohamed,%20I%20read%20the%20Saudi%20Electronics%20Brand%20Case%20Study%20and%20I'm%20interested%20in%20working%20with%20you." target="_blank" class="cta-btn">Want results like this? <i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="galleryOverlay" class="gallery-overlay" onclick="closeGallery(event)">
+        <button class="close-gallery" onclick="closeGallery(event)">&times;</button>
+        <div class="gallery-grid" onclick="event.stopPropagation()">
+            <div class="gallery-item"><img src="https://i.postimg.cc/RVy5CtBK/Gemini-Generated-Image-d1zwmcd1zwmcd1zw-(1).png" alt="Egypt Market 1"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/fR7vJ4d4/Whats-App-Image-2026-02-12-at-9-21-52-PM.jpg" alt="UK Market"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/qM13YkyF/Gemini-Generated-Image-419fcm419fcm419f.png" alt="KSA Market"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/fRff30yV/Whats-App-Image-2026-07-18-at-10-50-42-PM-(1).jpg" alt="Egypt Market 2"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/7ZZfVCXd/Whats-App-Image-2026-07-18-at-10-58-51-PM.jpg" alt="Egypt Market 3"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/NGWc2Tw0/Whats-App-Image-2026-10-01-at-10-35-16-AM.jpg" alt="KSA Electronics 1"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/fLJGJW23/Whats-App-Image-2026-10-01-at-10-08-57-AM.jpg" alt="KSA Electronics 2"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/CKNvSywK/Screenshot-2026-10-01-110948.png" alt="Results 3"></div>
+        </div>
+    </div>
+
     <section>
         <div class="container">
             <h2>FAQ</h2>
@@ -304,11 +511,6 @@
             </div>
         </div>
     </section>
-
-    <div class="container markets">
-        <h3>Global Markets</h3>
-        <span>🇪🇬 Egypt</span> • <span>🇺🇸 United States</span> • <span>🇸🇦 Saudi Arabia</span> • <span>🇬🇧 England</span>
-    </div>
 
     <footer>
         <div class="container">
@@ -333,18 +535,39 @@
             document.getElementById("caseStudyModal").style.display = "flex";
             document.body.style.overflow = "hidden";
         }
-
         function closeModal() {
             document.getElementById("caseStudyModal").style.display = "none";
             document.body.style.overflow = "auto";
         }
 
-        window.onclick = function(event) {
-            const modal = document.getElementById("caseStudyModal");
-            if (event.target == modal) {
-                closeModal();
+        function openModal2() {
+            document.getElementById("caseStudyModal2").style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+        function closeModal2() {
+            document.getElementById("caseStudyModal2").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function openGallery() {
+            document.getElementById("galleryOverlay").style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+        function closeGallery(event) {
+            if (event.target.id === "galleryOverlay" || event.target.classList.contains('close-gallery')) {
+                document.getElementById("galleryOverlay").style.display = "none";
+                document.body.style.overflow = "auto";
             }
         }
+
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeModal2();
+                document.getElementById("galleryOverlay").style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        });
     </script>
 </body>
 </html>
