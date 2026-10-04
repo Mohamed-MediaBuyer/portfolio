@@ -97,16 +97,22 @@
         .close-gallery { position: fixed; top: 20px; right: 30px; font-size: 3rem; color: var(--accent-color); background: transparent; border: none; cursor: pointer; z-index: 2001; transition: transform 0.3s; }
         .close-gallery:hover { transform: rotate(90deg); }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 60px auto 0; }
-        .gallery-item { border: 1px solid #222; border-radius: 10px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
+        .gallery-item { border: 1px solid #222; border-radius: 10px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; cursor: pointer; }
         .gallery-item:hover { transform: translateY(-5px); border-color: var(--accent-color); }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+
+        /* Image Viewer (Zoom) Styles - الجديد */
+        .image-viewer { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); z-index: 3000; justify-content: center; align-items: center; padding: 40px; }
+        .image-viewer img { max-width: 95%; max-height: 90vh; border-radius: 10px; border: 1px solid var(--accent-color); box-shadow: 0 10px 60px rgba(0, 255, 136, 0.2); }
+        .close-viewer { position: fixed; top: 20px; right: 30px; font-size: 3rem; color: var(--accent-color); background: transparent; border: none; cursor: pointer; z-index: 3001; transition: transform 0.3s; }
+        .close-viewer:hover { transform: rotate(90deg); }
 
         .markets { text-align: center; color: var(--text-muted); padding: 40px 0; border-top: 1px solid #222; }
         .markets span { display: inline-block; margin: 5px 10px; color: var(--text-main); font-weight: 500; font-size: 1.1rem; }
         footer { text-align: center; padding: 60px 0; background: #050505; }
         footer h2 { margin-bottom: 20px; }
         
-        @media (max-width: 768px) { h1 { font-size: 2.5rem; } .num-value { font-size: 2.2rem; } .nav-cta { display: none; } .grid-2-col { grid-template-columns: 1fr; } .case-study-img { height: 300px; } .logo { font-size: 1.2rem; } .profile-img { width: 40px; height: 40px; } .modal-content { padding: 25px; } .slide-inner { width: 85%; padding: 20px; } .close-gallery { font-size: 2rem; top: 10px; right: 15px; } .case-studies-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { h1 { font-size: 2.5rem; } .num-value { font-size: 2.2rem; } .nav-cta { display: none; } .grid-2-col { grid-template-columns: 1fr; } .case-study-img { height: 300px; } .logo { font-size: 1.2rem; } .profile-img { width: 40px; height: 40px; } .modal-content { padding: 25px; } .slide-inner { width: 85%; padding: 20px; } .close-gallery, .close-viewer { font-size: 2rem; top: 10px; right: 15px; } .case-studies-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -275,7 +281,7 @@
                     <div class="swiper-slide">
                         <div class="slide-inner">
                             <h3>Results</h3>
-                            <img src="https://i.postimg.cc/SNxm8V8T/Whats-App-Image-2026-10-04-at-12-28-45-PM.jpg" alt="Results Dashboard" class="case-study-img" onclick="openGallery()">
+                            <img src="https://i.postimg.cc/vB8YT7d9/Whats-App-Image-2026-10-04-at-2-33-46-PM.jpg" alt="Results Dashboard" class="case-study-img" onclick="openGallery()">
                         </div>
                     </div>
                 </div>
@@ -492,16 +498,22 @@
     <div id="galleryOverlay" class="gallery-overlay" onclick="closeGallery(event)">
         <button class="close-gallery" onclick="closeGallery(event)">&times;</button>
         <div class="gallery-grid" onclick="event.stopPropagation()">
-            <div class="gallery-item"><img src="https://i.postimg.cc/RVy5CtBK/Gemini-Generated-Image-d1zwmcd1zwmcd1zw-(1).png" alt="Egypt Market 1"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/fR7vJ4d4/Whats-App-Image-2026-02-12-at-9-21-52-PM.jpg" alt="UK Market"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/qM13YkyF/Gemini-Generated-Image-419fcm419fcm419f.png" alt="KSA Market"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/fRff30yV/Whats-App-Image-2026-07-18-at-10-50-42-PM-(1).jpg" alt="Egypt Market 2"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/7ZZfVCXd/Whats-App-Image-2026-07-18-at-10-58-51-PM.jpg" alt="Egypt Market 3"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/NGWc2Tw0/Whats-App-Image-2026-10-01-at-10-35-16-AM.jpg" alt="KSA Electronics 1"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/fLJGJW23/Whats-App-Image-2026-10-01-at-10-08-57-AM.jpg" alt="KSA Electronics 2"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/CKNvSywK/Screenshot-2026-10-01-110948.png" alt="Results 3"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/SNxm8V8T/Whats-App-Image-2026-10-04-at-12-28-45-PM.jpg" alt="Results 4"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/RVy5CtBK/Gemini-Generated-Image-d1zwmcd1zwmcd1zw-(1).png" alt="Egypt Market 1" onclick="viewImage(this.src)"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/fR7vJ4d4/Whats-App-Image-2026-02-12-at-9-21-52-PM.jpg" alt="UK Market" onclick="viewImage(this.src)"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/qM13YkyF/Gemini-Generated-Image-419fcm419fcm419f.png" alt="KSA Market" onclick="viewImage(this.src)"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/fRff30yV/Whats-App-Image-2026-07-18-at-10-50-42-PM-(1).jpg" alt="Egypt Market 2" onclick="viewImage(this.src)"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/7ZZfVCXd/Whats-App-Image-2026-07-18-at-10-58-51-PM.jpg" alt="Egypt Market 3" onclick="viewImage(this.src)"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/NGWc2Tw0/Whats-App-Image-2026-10-01-at-10-35-16-AM.jpg" alt="KSA Electronics 1" onclick="viewImage(this.src)"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/fLJGJW23/Whats-App-Image-2026-10-01-at-10-08-57-AM.jpg" alt="KSA Electronics 2" onclick="viewImage(this.src)"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/CKNvSywK/Screenshot-2026-10-01-110948.png" alt="Results 3" onclick="viewImage(this.src)"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/vB8YT7d9/Whats-App-Image-2026-10-04-at-2-33-46-PM.jpg" alt="Results 4" onclick="viewImage(this.src)"></div>
         </div>
+    </div>
+
+    <!-- Image Viewer (الصورة كبيرة على الشاشة كلها) -->
+    <div id="imageViewer" class="image-viewer" onclick="closeViewer(event)">
+        <button class="close-viewer" onclick="closeViewer(event)">&times;</button>
+        <img id="viewerImg" src="" alt="Full Size Result">
     </div>
 
     <section>
@@ -567,11 +579,23 @@
             }
         }
 
+        // كود عرض الصورة كبيرة (Zoom)
+        function viewImage(src) {
+            document.getElementById("viewerImg").src = src;
+            document.getElementById("imageViewer").style.display = "flex";
+        }
+        function closeViewer(event) {
+            if (event.target.id === "imageViewer" || event.target.classList.contains('close-viewer')) {
+                document.getElementById("imageViewer").style.display = "none";
+            }
+        }
+
         window.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeModal();
                 closeModal2();
                 document.getElementById("galleryOverlay").style.display = "none";
+                document.getElementById("imageViewer").style.display = "none";
                 document.body.style.overflow = "auto";
             }
         });
