@@ -101,7 +101,7 @@
         .gallery-item:hover { transform: translateY(-5px); border-color: var(--accent-color); }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
 
-        /* Image Viewer (Zoom) Styles - الجديد */
+        /* Image Viewer (Zoom) Styles */
         .image-viewer { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); z-index: 3000; justify-content: center; align-items: center; padding: 40px; }
         .image-viewer img { max-width: 95%; max-height: 90vh; border-radius: 10px; border: 1px solid var(--accent-color); box-shadow: 0 10px 60px rgba(0, 255, 136, 0.2); }
         .close-viewer { position: fixed; top: 20px; right: 30px; font-size: 3rem; color: var(--accent-color); background: transparent; border: none; cursor: pointer; z-index: 3001; transition: transform 0.3s; }
@@ -139,6 +139,7 @@
             <div class="tech-group">
                 <h3>Platforms I Scale</h3>
                 <div class="tech-icons">
+                    <div class="tech-item"><i class="fab fa-google"></i> Google Ads</div>
                     <div class="tech-item"><i class="fab fa-facebook"></i> Meta Ads</div>
                     <div class="tech-item"><i class="fab fa-tiktok"></i> TikTok Ads</div>
                     <div class="tech-item"><i class="fab fa-snapchat"></i> Snapchat Ads</div>
@@ -510,7 +511,7 @@
         </div>
     </div>
 
-    <!-- Image Viewer (الصورة كبيرة على الشاشة كلها) -->
+    <!-- Image Viewer -->
     <div id="imageViewer" class="image-viewer" onclick="closeViewer(event)">
         <button class="close-viewer" onclick="closeViewer(event)">&times;</button>
         <img id="viewerImg" src="" alt="Full Size Result">
@@ -521,7 +522,7 @@
             <h2>FAQ</h2>
             <div class="grid-2-col">
                 <div class="grid-item"><h3 class="faq-q">How do you measure success?</h3><p>I measure success by business results—not vanity metrics. My focus is on increasing revenue, improving ROAS, lowering CPA, and building sustainable growth.</p></div>
-                <div class="grid-item"><h3 class="faq-q">Which advertising platforms do you manage?</h3><p>I manage campaigns across Meta Ads, TikTok Ads, and Snapchat Ads, depending on where your audience is most active.</p></div>
+                <div class="grid-item"><h3 class="faq-q">Which advertising platforms do you manage?</h3><p>I manage campaigns across Google Ads, Meta Ads, TikTok Ads, and Snapchat Ads, depending on where your audience is most active.</p></div>
                 <div class="grid-item"><h3 class="faq-q">Do you work with all businesses?</h3><p>I primarily work with e-commerce brands that want to scale profitably through performance marketing.</p></div>
                 <div class="grid-item"><h3 class="faq-q">How long does it take to see results?</h3><p>Every business is different, but the first 2–4 weeks are focused on testing, gathering data, and identifying winning strategies before scaling.</p></div>
                 <div class="grid-item"><h3 class="faq-q">How often will we communicate?</h3><p>You'll receive regular updates on campaign performance, optimizations, and next steps. I believe clear communication is essential for long-term success.</p></div>
@@ -579,7 +580,6 @@
             }
         }
 
-        // كود عرض الصورة كبيرة (Zoom)
         function viewImage(src) {
             document.getElementById("viewerImg").src = src;
             document.getElementById("imageViewer").style.display = "flex";
