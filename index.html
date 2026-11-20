@@ -56,14 +56,15 @@ body::after{content:"";position:fixed;inset:0;z-index:950;pointer-events:none;op
 #topbar{position:fixed;top:0;left:0;right:0;z-index:900;transition:.3s;border-bottom:1px solid transparent}
 #topbar.scrolled{background:rgba(247,245,239,.88);backdrop-filter:blur(12px);border-color:var(--line)}
 #topbar .wrap{display:flex;align-items:center;gap:28px;height:76px}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-size:16px;letter-spacing:-.01em}
-.logo img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-size:16px;letter-spacing:-.01em;min-width:0;flex-wrap:nowrap}
+.logo img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);flex:none}
+.logo b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .logo em{font-style:normal;color:var(--accent)}
 .nav-links{display:flex;gap:26px;margin-left:12px}
 .nav-links a{font-weight:600;font-size:14px;color:var(--soft);text-decoration:none;transition:.2s}
 .nav-links a:hover{color:var(--ink)}
-.nav-right{margin-left:auto;display:flex;align-items:center;gap:14px}
-.burger{display:none;width:42px;height:42px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);position:relative}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:14px;flex:none}
+.burger{display:none;width:42px;height:42px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);position:relative;flex:none}
 .burger span{position:absolute;left:11px;right:11px;height:2px;background:var(--ink);border-radius:2px;top:15px;transition:.3s}
 .burger span:last-child{top:auto;bottom:15px}
 .burger.open span:first-child{transform:translateY(5px) rotate(45deg)}
@@ -306,6 +307,20 @@ footer .lbl{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;l
   .cases-grid{grid-template-columns:1fr}
   .dash img{height:300px}
 }
+@media (max-width:640px){
+  /* الهيدر على الموبايل: الاسم واضح + زر واتساب دائري بالأيقونة بس */
+  #topbar .wrap{gap:10px;height:66px}
+  .logo{gap:10px}
+  .logo img{width:36px;height:36px}
+  .logo b{font-size:14.5px}
+  .nav-right{gap:10px}
+  .nav-right .btn-sm{width:42px;height:42px;padding:0;border-radius:50%;font-size:16px}
+  .btn-txt{display:none}
+  .burger{width:40px;height:40px;border-radius:11px}
+  .burger span{left:10px;right:10px;top:14px}
+  .burger span:last-child{bottom:14px}
+  .mm-link{font-size:30px}
+}
 @media (max-width:600px){
   .why-grid,.plat-grid{grid-template-columns:1fr}
   .num{padding:0 0 0 22px}
@@ -332,7 +347,7 @@ footer .lbl{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;l
   <div class="wrap">
     <a href="#top" class="logo">
       <img src="https://i.postimg.cc/sgygcQn6/78bc1906-0736-4422-a2a9-66e9b33bc74c-image.webp" alt="Mohamed Abouomar">
-      Mohamed&nbsp;<em>Abouomar</em>
+      <b>Mohamed&nbsp;<em>Abouomar</em></b>
     </a>
     <nav class="nav-links" aria-label="Main">
       <a href="#approach">Approach</a>
@@ -342,7 +357,7 @@ footer .lbl{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;l
       <a href="#faq">FAQ</a>
     </nav>
     <div class="nav-right">
-      <a class="btn btn-wa btn-sm" href="https://wa.me/201127062880?text=Hi%20Mohamed,%20I%20found%20your%20portfolio%20and%20I'm%20interested%20in%20working%20with%20you.%20I'd%20love%20to%20schedule%20the%20free%20consultation%20and%20discuss%20my%20business%20goals." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Let's Talk</a>
+      <a class="btn btn-wa btn-sm" href="https://wa.me/201127062880?text=Hi%20Mohamed,%20I%20found%20your%20portfolio%20and%20I'm%20interested%20in%20working%20with%20you.%20I'd%20love%20to%20schedule%20the%20free%20consultation%20and%20discuss%20my%20business%20goals." target="_blank" rel="noopener" aria-label="Let's Talk on WhatsApp"><i class="fab fa-whatsapp"></i><span class="btn-txt">Let's Talk</span></a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
@@ -640,7 +655,7 @@ footer .lbl{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;l
     <div>
       <a href="#top" class="logo">
         <img src="https://i.postimg.cc/sgygcQn6/78bc1906-0736-4422-a2a9-66e9b33bc74c-image.webp" alt="Mohamed Abouomar">
-        Mohamed&nbsp;<em style="color:var(--accent)">Abouomar</em>
+        <b>Mohamed&nbsp;<em style="color:var(--accent)">Abouomar</em></b>
       </a>
       <p class="foot-blurb">A data-driven Media Buyer building profitable ad systems for e-commerce brands across global markets.</p>
     </div>
